@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">May Internship 23</string>
+    <string name="welcome">Welcome User !</string>
+    <string name="login_info">Hey User Please Enter Your Login Details</string>
+    <string name="email">Enter Email</string>
+    <string name="pass">Enter Password</string>
+    <string name="login">Log in</string>
+    <string name="create_account">Create An Account</string>
+    <string name="product_name">Product Name :</string>
+    <string name="product_price">Price :</string>
+    <string name="product_description">Description :</string>
 </resources>

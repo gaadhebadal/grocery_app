@@ -3,9 +3,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/blue"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/login_img"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/login_page" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/welcome"
+        style="@style/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_img"
+        android:layout_centerInParent="true"
+        android:text="@string/welcome" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/add_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/login_info" />
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/email"
+        android:drawableLeft="@drawable/mail"
+        android:drawablePadding="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/email" />
+
+    <EditText
+        android:id="@+id/password"
+        style="@style/email"
+        android:drawableLeft="@drawable/padlock"
+        android:drawablePadding="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="12"
+        android:layout_below="@id/email"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="15dp"
+        android:hint="@string/pass"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login_but"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/login"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/create_acc"
+        style="@style/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_but"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="35sp"
+        android:text="@string/create_account"
+        android:textColor="@color/black_tra" />
+
+</RelativeLayout><!--to make application responsive use @dimen/_150sdp-->

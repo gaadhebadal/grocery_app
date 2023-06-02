@@ -59,8 +59,8 @@ public class producttrendAdapter extends RecyclerView.Adapter<producttrendAdapte
                 sp.edit().putString(constantdata.PRODUCT_PRICE,productArrayList.get(position).getPrice()).commit();
                 sp.edit().putString(constantdata.PRODUCT_UNIT,productArrayList.get(position).getUnit()).commit();
                 sp.edit().putString(constantdata.PRODUCT_IMAGE, String.valueOf(productArrayList.get(position).getImage())).commit();
-              //  sp.edit().putString(ConstantData.PRODUCT_DESCRIPTION,productArrayList.get(position).()).commit();
-            //    new common(context,ProductDetailActivity.class);
+                sp.edit().putString(constantdata.PRODUCT_DESCRIPTION,productArrayList.get(position).getDescription()).commit();
+                new common(context, ProductDetailsActivity.class);
             }
         });
 

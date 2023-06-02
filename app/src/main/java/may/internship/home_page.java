@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class home_page extends AppCompatActivity {
     TextView name;
     Button logout;
+    ImageView profile;
     SharedPreferences sp;
 
     // for category -------------------------------------
@@ -77,6 +79,7 @@ public class home_page extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         name = findViewById(R.id.home_name);
         logout = findViewById(R.id.logout_but);
+        profile = findViewById(R.id.profile);
 
         sp = getSharedPreferences(constantdata.pref, MODE_PRIVATE);
         name.setText("Welcome " + sp.getString(constantdata.name, ""));
@@ -92,6 +95,12 @@ public class home_page extends AppCompatActivity {
                 //using clear you can remove all data
                 sp.edit().clear().commit();
                 new common(home_page.this, MainActivity.class);
+            }
+        });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
         setcategorydata();

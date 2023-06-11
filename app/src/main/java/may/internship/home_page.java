@@ -82,7 +82,7 @@ public class home_page extends AppCompatActivity {
         profile = findViewById(R.id.profile);
 
         sp = getSharedPreferences(constantdata.pref, MODE_PRIVATE);
-        name.setText("Welcome " + sp.getString(constantdata.name, ""));
+        name.setText("Welcome " + sp.getString(constantdata.NAME, ""));
 
 //        Bundle bundle = getIntent().getExtras();
 //         name.setText(bundle.getString("NAME"));
@@ -100,7 +100,7 @@ public class home_page extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new common(home_page.this, ProfileActivity.class);
             }
         });
         setcategorydata();

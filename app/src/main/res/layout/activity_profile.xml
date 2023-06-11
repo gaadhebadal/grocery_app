@@ -1,9 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/login_page" />
+
+        <EditText
+            android:id="@+id/profile_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.00dp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="26.00dp"
+            android:background="@drawable/custom_border"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="@dimen/_12sdp"
+            android:hint=" Name"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/profile_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/custom_border"
+            android:drawableLeft="@drawable/phone"
+            android:drawablePadding="@dimen/_12sdp"
+            android:hint="Enter Number"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:padding="@dimen/_10sdp" />
+
+
+        <EditText
+            android:id="@+id/profile_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/custom_border"
+            android:drawableStart="@drawable/mail"
+            android:drawablePadding="@dimen/_12sdp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/_10sdp" />
+        <EditText
+            android:id="@+id/profile_date_of_birth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:background="@drawable/custom_border"
+            android:drawableLeft="@drawable/dateofbirth"
+            android:drawablePadding="@dimen/_12sdp"
+            android:editable="false"
+            android:hint="Enter Birth Date "
+            android:padding="@dimen/_10sdp" />
+
+        <RadioGroup
+            android:id="@+id/profile_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/profile_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/man"
+                android:text="male"
+                android:textColor="@color/black_tra"
+                app:buttonTint="@color/black" />
+
+            <RadioButton
+                android:id="@+id/profile_female"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/woman"
+                android:text="female"
+                android:textColor="@color/black_tra"
+                app:buttonTint="@color/black" />
+            <RadioButton
+                android:id="@+id/profile_other"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/other"
+                android:text="other"
+                android:textColor="@color/black_tra"
+                app:buttonTint="@color/black" />
+
+        </RadioGroup>
+        <TextView
+            android:id="@+id/profile_city"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="Select Your City "
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/profile_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp" />
+
+        <Button
+            android:id="@+id/profile_edit_but"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:padding="@dimen/_12sdp"
+            android:text="Edit Profile"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/profile_submit_but"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginVertical="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:padding="@dimen/_12sdp"
+            android:text="Submit"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+</ScrollView>

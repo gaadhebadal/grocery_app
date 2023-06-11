@@ -4,6 +4,10 @@
     <string name="login_info">Hey User Please Enter Your Login Details</string>
     <string name="email">Enter Email</string>
     <string name="pass">Enter Password</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+
+    <string name="other">other</string>
     <string name="login">Log in</string>
     <string name="create_account">Create An Account</string>
     <string name="product_name">Product Name :</string>

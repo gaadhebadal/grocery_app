@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                                 String sName = cursor.getString(0);
                                 Log.d("data",sName);
                                 new common(MainActivity.this, "Login Successfully");
-                                sp.edit().putString(constantdata.name,sName).commit();
+                                sp.edit().putString(constantdata.NAME,sName).commit();
                                 new common(MainActivity.this, home_page.class);
 
 

@@ -26,7 +26,6 @@ public class home_page extends AppCompatActivity {
     RecyclerView category_rv;
     String[] categoryarr = {"Grains", "Pulses", "Fruits", "Vegetables", "Dairy products", "Garam masala", "Dry fruits"};
     int[] categoryimg = {R.drawable.grains, R.drawable.pulses, R.drawable.fruits, R.drawable.vegetables, R.drawable.dairy_products, R.drawable.garam_masala, R.drawable.dry_fruits};
-
     // for category -------------------------------------
 
     // for products -------------------------------------
@@ -37,6 +36,7 @@ public class home_page extends AppCompatActivity {
     String[] productunit = {"1 KG", "1 KG", "500 GM", "1 L", "250 GM", "500 GM"};
     ArrayList<ProductList> productArrayList;
     // for products -------------------------------------
+
 
     // for Trending products -------------------------------------
     RecyclerView producttrend_rv;
@@ -82,7 +82,7 @@ public class home_page extends AppCompatActivity {
         profile = findViewById(R.id.profile);
 
         sp = getSharedPreferences(constantdata.pref, MODE_PRIVATE);
-        name.setText("Welcome " + sp.getString(constantdata.NAME, ""));
+        name.setText("Welcome " + sp.getString(constantdata.name, ""));
 
 //        Bundle bundle = getIntent().getExtras();
 //         name.setText(bundle.getString("NAME"));

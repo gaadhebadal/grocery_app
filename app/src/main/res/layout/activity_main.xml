@@ -57,15 +57,25 @@
         android:layout_marginBottom="15dp"
         android:hint="@string/pass"
         android:inputType="textPassword" />
+    <TextView
+        android:id="@+id/main_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/password"
+        android:layout_alignParentRight="true"
+        style="@style/add_text"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:padding="@dimen/_5sdp"
+        android:text="Forgot Password" />
 
     <Button
         android:id="@+id/login_but"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password"
+        android:layout_below="@id/main_forgot_password"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="14dp"
         android:text="@string/login"
         android:textSize="20sp" />
 
@@ -76,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/login_but"
         android:layout_centerInParent="true"
-        android:layout_marginTop="35sp"
+        android:layout_marginTop="25sp"
         android:text="@string/create_account"
         android:textColor="@color/black_tra" />
 

@@ -2,6 +2,7 @@ package may.internship;
 
 public class constantdata {
     public static String pref="pref";
+
     public static String name="name";
     public static String NAME = "name";
     public static String EMAIL = "email";

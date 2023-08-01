@@ -28,11 +28,12 @@ public class ProfileActivity extends AppCompatActivity {
     Button edit_profile,submit;
     SharedPreferences sp;
     RadioButton male,female;
+    Calendar calendar;
     RadioGroup gender;
     String sGender, sCity;
     Spinner spinner;
     boolean isSelect = false;
-
+    SQLiteDatabase db;
     ArrayList<String> arrayList;
 
     @Override
@@ -49,8 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
         edit_profile=findViewById(R.id.profile_edit_but);
         male = findViewById(R.id.profile_male);
         female = findViewById(R.id.profile_female);
-        sp = getSharedPreferences(constantdata.PREF,MODE_PRIVATE);
-
 
         arrayList = new ArrayList<>();
         arrayList.add("Gir-somnath");
@@ -65,9 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter(ProfileActivity.this, android.R.layout.simple_list_item_1, arrayList);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
         spinner.setAdapter(adapter);
+        sp = getSharedPreferences(constantdata.PREF,MODE_PRIVATE);
 
 
-        SQLiteDatabase db;
         db = openOrCreateDatabase("first_app", MODE_PRIVATE, null);
         String tableQuery = "CREATE TABLE IF NOT EXISTS USER_DATA(NAME VARCHAR(100),CONTACT BIGINT(12),EMAIL VARCHAR(100),PASSWORD VARCHAR(15),DOB VARCHAR(15),GENDER VARCHAR(20),CITY VARCHAR(50))";
         db.execSQL(tableQuery);
@@ -97,8 +96,6 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-
-        Calendar calendar;
         calendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateClick = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -118,13 +115,17 @@ public class ProfileActivity extends AppCompatActivity {
                 //normal date piker
                 //new DatePickerDialog(SignupActivity.this,dateClick,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
 
-                //disable date
-                DatePickerDialog pickerDialog = new DatePickerDialog(ProfileActivity.this, dateClick, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-                //past date enable
-                //pickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-                //feature date enable
-                pickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-                pickerDialog.show();
+
+                if(isSelect){
+                    //disable date
+                    DatePickerDialog pickerDialog = new DatePickerDialog(ProfileActivity.this, dateClick, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+                    //past date enable
+                    //pickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                    //feature date enable
+                    pickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                    pickerDialog.show();
+                }
+
             }
         });
         edit_profile.setOnClickListener(new View.OnClickListener() {
@@ -199,12 +200,10 @@ public class ProfileActivity extends AppCompatActivity {
             edit_profile.setVisibility(View.VISIBLE);
             submit.setVisibility(View.GONE);
         }
-
         name.setText(sp.getString(constantdata.NAME,""));
         email.setText(sp.getString(constantdata.EMAIL,""));
         contact.setText(sp.getString(constantdata.CONTACT,""));
         dateOfBirth.setText(sp.getString(constantdata.DOB,""));
-
         sGender = sp.getString(constantdata.GENDER,"");
         if(sGender.equalsIgnoreCase(getResources().getString(R.string.male))){
             male.setChecked(true);

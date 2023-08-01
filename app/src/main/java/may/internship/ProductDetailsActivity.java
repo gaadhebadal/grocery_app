@@ -11,7 +11,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView name,price,description;
-
     SharedPreferences sp;
 
     @Override

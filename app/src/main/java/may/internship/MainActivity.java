@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
     Button login;
     EditText email, password;
-    TextView create_acc;
+    TextView create_acc,forgotPassword;
     SQLiteDatabase db;
     SharedPreferences sp;
 
@@ -38,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
         db = openOrCreateDatabase("first_app", MODE_PRIVATE, null);
         String tableQuery = "CREATE TABLE IF NOT EXISTS USER_DATA(NAME VARCHAR(100),CONTACT BIGINT(12),EMAIL VARCHAR(100),PASSWORD VARCHAR(15),DOB VARCHAR(15),GENDER VARCHAR(20),CITY VARCHAR(50))";
         db.execSQL(tableQuery);
+
+        forgotPassword = findViewById(R.id.main_forgot_password);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new common(MainActivity.this, Forgot_password_activity.class);
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

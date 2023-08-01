@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class home_page extends AppCompatActivity {
     TextView name;
-    Button logout;
+    Button logout,changePassword;
     ImageView profile;
     SharedPreferences sp;
 
@@ -95,6 +95,13 @@ public class home_page extends AppCompatActivity {
                 //using clear you can remove all data
                 sp.edit().clear().commit();
                 new common(home_page.this, MainActivity.class);
+            }
+        });
+        changePassword = findViewById(R.id.Change_password);
+        changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new common(home_page.this, Change_password.class);
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {

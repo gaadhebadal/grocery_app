@@ -63,24 +63,42 @@ public class MainActivity extends AppCompatActivity {
                     Cursor cursor = db.rawQuery(loginQuery,null);
 
                     if(cursor.getCount()>0){
-                            while (cursor.moveToNext()){
-                                String sName = cursor.getString(0);
-                                Log.d("data",sName);
-                                new common(MainActivity.this, "Login Successfully");
-                                sp.edit().putString(constantdata.NAME,sName).commit();
-                                new common(MainActivity.this, home_page.class);
+                        while (cursor.moveToNext()){
+                            String sName = cursor.getString(0);
+                            String sEmail = cursor.getString(1);
+                            String sContact = cursor.getString(2);
+                            String sPassword = cursor.getString(3);
+                            String sDob = cursor.getString(4);
+                            String sGender = cursor.getString(5);
+                            String sCity = cursor.getString(6);
+                            Log.d("LOGIN_USER_DATA",sName+"\n"+sEmail+"\n"+sContact+"\n"+sPassword+"\n"+sDob+"\n"+sGender+"\n"+sCity);
 
+                            System.out.println("Login Successfully");
+                            Log.d("LOGIN", "Login Successfully");
+                            Log.e("LOGIN", "Login Successfully");
+                            new common(MainActivity.this, "Login Successfully");
+                            new common(v,"Login Successfully");
 
-//Bundle for fetch data from database and print into page
-//                                Intent intent = new Intent(MainActivity.this, home_page.class);
-//                                Bundle bundle = new Bundle();
-//                                bundle.putString("NAME",sName);
-//                                intent.putExtras(bundle);
-//                                startActivity(intent);
-                            }
+                            sp.edit().putString(constantdata.NAME,sName).commit();
+                            sp.edit().putString(constantdata.EMAIL,sEmail).commit();
+                            sp.edit().putString(constantdata.CONTACT,sContact).commit();
+                            sp.edit().putString(constantdata.PASSWORD,sPassword).commit();
+                            sp.edit().putString(constantdata.DOB,sDob).commit();
+                            sp.edit().putString(constantdata.GENDER,sGender).commit();
+                            sp.edit().putString(constantdata.CITY,sCity).commit();
+
+                            new common(MainActivity.this,DashbordActivity.class);
+
+                                /*Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("NAME",sName);
+                                intent.putExtras(bundle);
+                                startActivity(intent);*/
+                        }
                     }
                     else{
-                        new common(v,"Enter Valid Email or Password");
+                        new common(MainActivity.this, "Login Unsuccessfully");
+                        new common(v,"Login Unsuccessfully");
                     }
                 }
             }

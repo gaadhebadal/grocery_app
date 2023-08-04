@@ -1,6 +1,8 @@
 package may.internship;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static android.content.Context.MODE_PRIVATE;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,18 +10,16 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class home_page extends AppCompatActivity {
+public class HomeFragment extends Fragment {
     TextView name;
-    Button logout,changePassword;
-    ImageView profile;
+
     SharedPreferences sp;
 
     // for category -------------------------------------
@@ -72,60 +72,41 @@ public class home_page extends AppCompatActivity {
     TextView productviewall;
     TextView trendingproductviewall;
 
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
-        name = findViewById(R.id.home_name);
-        logout = findViewById(R.id.logout_but);
-        profile = findViewById(R.id.profile);
+        name = view.findViewById(R.id.home_name);
 
-        sp = getSharedPreferences(constantdata.pref, MODE_PRIVATE);
+
+        sp = getActivity().getSharedPreferences(constantdata.pref, MODE_PRIVATE);
+
         name.setText("Welcome " + sp.getString(constantdata.name, ""));
 
 //        Bundle bundle = getIntent().getExtras();
 //         name.setText(bundle.getString("NAME"));
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //using remove u can remove single data
-                // sp.edit().remove(constantdata.name).commit();
-                //using clear you can remove all data
-                sp.edit().clear().commit();
-                new common(home_page.this, MainActivity.class);
-            }
-        });
-        changePassword = findViewById(R.id.Change_password);
-        changePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new common(home_page.this, Change_password.class);
-            }
-        });
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new common(home_page.this, ProfileActivity.class);
-            }
-        });
-        setcategorydata();
-        setproductdaata();
-        setproducttrenddata();
 
+        setcategorydata(view);
+        setproductdaata(view);
+        setproducttrenddata(view);
+        return view;
     }
 
-    private void setproductdaata() {
+    private void setproductdaata(View view) {
 
-        productviewall = findViewById(R.id.home_product_view_all);
+        productviewall = view.findViewById(R.id.home_product_view_all);
         productviewall.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                new common(home_page.this, ProductActivity.class);
+            public void onClick(View view) {
+                new common(getActivity(), ProductActivity.class);
             }
         });
-        product_rv = findViewById(R.id.home_product_recyclerview);
+        product_rv = view.findViewById(R.id.home_product_recyclerview);
         product_rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         product_rv.setItemAnimator(new DefaultItemAnimator());
         product_rv.setNestedScrollingEnabled(false);
@@ -142,22 +123,22 @@ public class home_page extends AppCompatActivity {
             productArrayList.add(list);
         }
 
-        productAdapter prodAdapter = new productAdapter(home_page.this, productArrayList);
+        productAdapter prodAdapter = new productAdapter(getActivity(), productArrayList);
         product_rv.setAdapter(prodAdapter);
     }
 
-    private void setproducttrenddata() {
+    private void setproducttrenddata(View view) {
 
-        trendingproductviewall = findViewById(R.id.home_product_trending_view_all);
+        trendingproductviewall = view.findViewById(R.id.home_product_trending_view_all);
         trendingproductviewall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new common(home_page.this, TrendingProductActivity.class);
+                new common(getActivity(), TrendingProductActivity.class);
             }
         });
 
-        producttrend_rv = findViewById(R.id.home_product_trending_recyclerview);
-        producttrend_rv.setLayoutManager(new LinearLayoutManager(home_page.this));
+        producttrend_rv = view.findViewById(R.id.home_product_trending_recyclerview);
+        producttrend_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         producttrend_rv.setItemAnimator(new DefaultItemAnimator());
         producttrend_rv.setNestedScrollingEnabled(false);
 
@@ -173,21 +154,16 @@ public class home_page extends AppCompatActivity {
             producttrendArrayList.add(list);
         }
 
-        producttrendAdapter prodAdapter = new producttrendAdapter(home_page.this, producttrendArrayList);
+        producttrendAdapter prodAdapter = new producttrendAdapter(getActivity(), producttrendArrayList);
         producttrend_rv.setAdapter(prodAdapter);
     }
 
-    private void setcategorydata() {
-        category_rv = findViewById(R.id.home_category);
+    private void setcategorydata(View view) {
+        category_rv = view.findViewById(R.id.home_category);
         category_rv.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
         category_rv.setItemAnimator(new DefaultItemAnimator());
-        categoryAdapter catAdapter = new categoryAdapter(home_page.this, categoryarr, categoryimg);
+        categoryAdapter catAdapter = new categoryAdapter(getActivity(), categoryarr, categoryimg);
         category_rv.setAdapter(catAdapter);
     }
 
-    @Override
-    public void onBackPressed() {
-        // super.onBackPressed();
-        finishAffinity();
-    }
 }

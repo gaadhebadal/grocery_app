@@ -36,7 +36,7 @@ public class splash_screen extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    new common(splash_screen.this, home_page.class);
+                    new common(splash_screen.this, DashbordActivity.class);
                     finish();
                 }
             }

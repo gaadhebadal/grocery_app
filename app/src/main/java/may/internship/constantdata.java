@@ -13,6 +13,8 @@ public class constantdata {
     public static String CITY = "city";
     public static String DOB = "dob";
     public static String PRICE_SYMBOL = "₹";
+    public static String CART_TOTAL = "cart_total";
+
     public static String PREF = "pref";
     public static String PRODUCT_NAME = "product_name";
     public static String PRODUCT_PRICE = "product_price";

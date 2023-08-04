@@ -38,6 +38,12 @@ dependencies {
     // fro round image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    //Meow Bottom Navigation
+    implementation 'com.etebarian:meow-bottom-navigation-java:1.2.0'
+
+    //Razorpay Payment Gateway
+    implementation 'com.razorpay:checkout:1.6.20'
+
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

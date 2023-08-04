@@ -1,20 +1,7 @@
 package may.internship;
 
-public class ProductList {
-
-    String name;
-    String price;
-    String unit;
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    String description;
+public class CartList {
+    String name,price,unit,description,qty;
     int image;
 
     public String getName() {
@@ -28,12 +15,6 @@ public class ProductList {
     public String getPrice() {
         return price;
     }
-    boolean isCart = false;
-    boolean isWishlist = false;
-    public boolean isCart() {return isCart;}
-    public boolean isWishlist() {
-        return isWishlist;
-    }
 
     public void setPrice(String price) {
         this.price = price;
@@ -45,6 +26,22 @@ public class ProductList {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
     }
 
     public int getImage() {
